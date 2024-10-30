@@ -63,9 +63,7 @@ pub fn transform_load(dataset: &str) -> Result<String> {
     for result in rdr.records() {
         match result {
             Ok(record) => {
-                stmt.execute([
-                    &record[0], &record[1], &record[2], &record[3], &record[4],
-                ])?;
+                stmt.execute([&record[0], &record[1], &record[2], &record[3], &record[4]])?;
             }
             Err(err) => {
                 eprintln!("Error reading CSV record: {:?}", err);
@@ -82,12 +80,12 @@ pub fn query(query: &str) -> Result<()> {
         let mut stmt = conn.prepare(query)?;
         let results = stmt.query_map(params![], |row| {
             Ok((
-                row.get::<usize, i32>(0)?,   // id
-                row.get::<usize, i32>(1)?,   // year
-                row.get::<usize, i32>(2)?,   // month
-                row.get::<usize, i32>(3)?,   // date_of_month
-                row.get::<usize, i32>(4)?,   // day_of_week
-                row.get::<usize, i32>(5)?,   // births
+                row.get::<usize, i32>(0)?, // id
+                row.get::<usize, i32>(1)?, // year
+                row.get::<usize, i32>(2)?, // month
+                row.get::<usize, i32>(3)?, // date_of_month
+                row.get::<usize, i32>(4)?, // day_of_week
+                row.get::<usize, i32>(5)?, // births
             ))
         })?;
 

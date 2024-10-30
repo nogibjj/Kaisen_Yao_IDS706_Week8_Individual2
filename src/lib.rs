@@ -78,7 +78,6 @@ pub fn transform_load(dataset: &str) -> Result<String> {
 
 pub fn query(query: &str) -> Result<()> {
     let conn = Connection::open("US_births_DB.db")?;
-    // Read operation
     if query.trim().to_lowercase().starts_with("select") {
         let mut stmt = conn.prepare(query)?;
         let results = stmt.query_map(params![], |row| {
@@ -104,7 +103,6 @@ pub fn query(query: &str) -> Result<()> {
             }
         }
     } else {
-        // other CUD operations
         conn.execute_batch(query)?;
     }
     log_query(query, LOG_FILE);

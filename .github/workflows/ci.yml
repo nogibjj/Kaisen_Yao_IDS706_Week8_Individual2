@@ -40,10 +40,10 @@ jobs:
     - name: Test
       run: make test
     - name: Archive Binary
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3
       with:
         name: optimized-binary
-        path: target/release/jeremy_tan_sqlite
+        path: target/release/kaisen_yao_sqlite
     - name: pull repository
       run: git pull
     - name: add rust logs

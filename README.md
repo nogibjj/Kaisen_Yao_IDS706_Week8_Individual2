@@ -43,7 +43,7 @@ This project presents a streamlined tool in Rust for data Extraction, Transforma
 - To download the built binary, navigate to `Actions` and open the latest workflow run.
 
 ## Use of LLM: Leveraging Language Models in Development
-Throughout the development of this project, a Language Learning Model (ChatGPT 4o) was utilized to enhance productivity and ensure accuracy. The LLM assisted in:
+Throughout the development of this project, a LLM (ChatGPT 4o) was utilized to enhance productivity and ensure accuracy. The LLM assisted in:
 
 - Translating and adapting Python code into Rust, particularly for data manipulation and ETL operations.
 - Troubleshooting issues in Rust, such as handling borrow checker rules and optimizing error handling.

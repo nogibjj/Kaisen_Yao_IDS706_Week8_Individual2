@@ -19,3 +19,12 @@ fn test_transform_load() {
 
     assert_eq!(result.unwrap(), "US_births_DB.db");
 }
+
+#[test]
+fn test_query() {
+    // Execute a SELECT query
+    let select_query = "SELECT * FROM US_births_DB WHERE id = 1;";
+    let result = query(select_query);
+
+    assert!(result.is_ok());
+}

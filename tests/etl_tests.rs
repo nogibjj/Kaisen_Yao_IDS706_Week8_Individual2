@@ -17,7 +17,7 @@ fn test_transform_load() {
     let dataset = "data/US_births.csv";
     let result = transform_load(dataset);
 
-    assert_eq!(result.unwrap(), "US_births.db");
+    assert_eq!(result.unwrap(), "US_births_DB.db");
 }
 
 #[test]

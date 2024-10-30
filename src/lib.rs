@@ -17,7 +17,7 @@ fn log_query(query: &str, log_file: &str) {
 }
 
 pub fn extract(url: &str, file_path: &str, directory: &str) {
-    if !fs::metadata(directory).is_ok() {
+    if fs::metadata(directory).is_err() {
         fs::create_dir_all(directory).expect("Failed to create directory");
     }
 
@@ -63,7 +63,7 @@ pub fn transform_load(dataset: &str) -> Result<String> {
     for result in rdr.records() {
         match result {
             Ok(record) => {
-                stmt.execute(&[
+                stmt.execute([
                     &record[0], &record[1], &record[2], &record[3], &record[4],
                 ])?;
             }
@@ -105,7 +105,7 @@ pub fn query(query: &str) -> Result<()> {
         }
     } else {
         // other CUD operations
-        let _num_affected_rows = conn.execute_batch(query)?;
+        conn.execute_batch(query)?;
     }
     log_query(query, LOG_FILE);
     Ok(())
